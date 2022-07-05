@@ -8,6 +8,8 @@ Yet another RFC3986-aware URI utilities.
 
 <br><br></div>
 
+**_This package is still under heavy development._**
+
 It does not depend on any other packages nor platform-specific JavaScript features, so it should work in browsers, Deno and Node.js.
 
 ## Installation
@@ -23,11 +25,3 @@ For Node.js, just install `uriware` from the npm registry:
 - `npm install uriware`
 - `pnpm add uriware`
 - `yarn add uriware`
-
-## Usage
-
-```ts
-const { assertEquals } = await import(
-  "https://deno.land/std/testing/asserts.ts"
-)
-```
