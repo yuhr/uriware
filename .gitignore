@@ -1,0 +1,13 @@
+.*
+*.log
+node_modules
+
+!.git*
+!.*rc
+!.eslint
+!.husky
+!.editorconfig
+!.vscode
+!.tool-versions
+
+dist
