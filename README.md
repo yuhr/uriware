@@ -10,7 +10,7 @@ Yet another RFC3986-aware URI utilities.
 
 **_This package is still under heavy development._**
 
-It does not depend on any other packages nor platform-specific JavaScript features, so it should work in browsers, Deno and Node.js.
+It's bundled with [`dnt`](https://github.com/denoland/dnt), so it should work in browsers, Deno and Node.js.
 
 ## Installation
 
