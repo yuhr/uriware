@@ -56,9 +56,9 @@ const regNamePreferred = `(?:${label}\\.)+${label}`
 const regNamePreferredWithKnownTlds = `(?:${label}\\.)+(?:${tlds.join("|")})`
 
 const normalizeOptions = (
-	options?: {
-		preset: keyof typeof RegExpUri.presets
-	} & Partial<RegExpUri.Options>,
+	options?: Partial<
+		{ preset: keyof typeof RegExpUri.presets } & RegExpUri.Options
+	>,
 ): RegExpUri.Options => {
 	const preset = options?.preset ?? "canonical"
 	const exact = options?.exact ?? false
@@ -279,9 +279,7 @@ class RegExpUri extends RegExp {
 	options: RegExpUri.Options
 	constructor(
 		options?:
-			| ({
-					preset: keyof typeof RegExpUri.presets
-			  } & Partial<RegExpUri.Options>)
+			| Partial<{ preset: keyof typeof RegExpUri.presets } & RegExpUri.Options>
 			| RegExpUri,
 		flags?: string,
 	) {
