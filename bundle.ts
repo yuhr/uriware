@@ -4,16 +4,16 @@ import packageJson from "./package.json" assert { type: "json" }
 await emptyDir("./dist")
 
 await build({
-  entryPoints: ["./src/index.ts"],
-  outDir: "./dist",
-  shims: {
-    // see JS docs for overview and more options
-    deno: true,
-  },
-  package: packageJson,
-  packageManager: "pnpm",
-  typeCheck: false,
-  test: false,
+	entryPoints: ["./src/index.ts"],
+	outDir: "./dist",
+	shims: {
+		// see JS docs for overview and more options
+		deno: true,
+	},
+	package: packageJson,
+	packageManager: "pnpm",
+	typeCheck: false,
+	test: false,
 })
 
 // post build steps

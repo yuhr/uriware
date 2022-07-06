@@ -1,12 +1,12 @@
 {
-  "semi": false,
-  "singleQuote": false,
-  "trailingComma": "all",
-  "arrowParens": "avoid",
-  "overrides": [
-    {
-      "files": ".*rc",
-      "options": { "parser": "json" }
-    }
-  ]
+	"semi": false,
+	"singleQuote": false,
+	"trailingComma": "all",
+	"arrowParens": "avoid",
+	"overrides": [
+		{
+			"files": ".*rc",
+			"options": { "parser": "json" }
+		}
+	]
 }

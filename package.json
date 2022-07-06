@@ -1,28 +1,28 @@
 {
-  "name": "uriware",
-  "version": "0.0.0",
-  "license": "MPL-2.0",
-  "description": "Yet another RFC3986-aware URI utilities.",
-  "author": "Yu Shimura <mail@yuhr.org>",
-  "homepage": "https://github.com/yuhr/uriware#readme",
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/yuhr/uriware.git"
-  },
-  "type": "module",
-  "sideEffects": false,
-  "devDependencies": {
-    "@typescript-eslint/eslint-plugin": "^5.30.5",
-    "@typescript-eslint/parser": "^5.30.5",
-    "eclint": "^2.8.1",
-    "eslint": "^8.19.0",
-    "eslint-config-prettier": "^8.5.0",
-    "eslint-plugin-consistent-default-export-name": "^0.0.15",
-    "eslint-plugin-import": "^2.26.0",
-    "eslint-plugin-unused-imports": "^2.0.0",
-    "husky": "^8.0.1",
-    "lint-staged": "^13.0.3",
-    "prettier": "npm:@yuhr/prettier@^2.7.1",
-    "typescript": "^4.7.4"
-  }
+	"name": "uriware",
+	"version": "0.0.0",
+	"license": "MPL-2.0",
+	"description": "Yet another RFC3986-aware URI utilities.",
+	"author": "Yu Shimura <mail@yuhr.org>",
+	"homepage": "https://github.com/yuhr/uriware#readme",
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/yuhr/uriware.git"
+	},
+	"type": "module",
+	"sideEffects": false,
+	"devDependencies": {
+		"@typescript-eslint/eslint-plugin": "^5.30.5",
+		"@typescript-eslint/parser": "^5.30.5",
+		"eclint": "^2.8.1",
+		"eslint": "^8.19.0",
+		"eslint-config-prettier": "^8.5.0",
+		"eslint-plugin-consistent-default-export-name": "^0.0.15",
+		"eslint-plugin-import": "^2.26.0",
+		"eslint-plugin-unused-imports": "^2.0.0",
+		"husky": "^8.0.1",
+		"lint-staged": "^13.0.3",
+		"prettier": "npm:@yuhr/prettier@^2.7.1",
+		"typescript": "^4.7.4"
+	}
 }
