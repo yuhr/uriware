@@ -1,6 +1,6 @@
 {
 	"name": "uriware",
-	"version": "0.0.1",
+	"version": "0.0.2",
 	"license": "MPL-2.0",
 	"description": "Yet another RFC3986-aware URI utilities.",
 	"author": "Yu Shimura <mail@yuhr.org>",
