@@ -22,8 +22,8 @@ const pathEmpty = ``
 const pathRootless = `${segmentNz}(?:/${segment})*`
 // const pathNoscheme = `${segmentNzNc}(?:/${segment})*`
 const pathAbsolute = `/(?:${segmentNz}(?:/${segment})*)?`
-const pathAbempty = `(?:/${segment})*`
-const pathNoauthority = `(?:${pathAbsolute}|${pathRootless}|${pathEmpty})`
+// const pathAbempty = `(?:/${segment})*`
+// const pathNoauthority = `(?:${pathAbsolute}|${pathRootless}|${pathEmpty})`
 // const path = `(?:${pathAbempty}|${pathAbsolute}|${pathNoscheme}|${pathRootless}|${pathEmpty})`
 
 const regName = `(?:${unreserved}|${pctEncoded}|${subDelims})*`
@@ -169,9 +169,23 @@ const generatePatternAuthority = (options: RegExpUri.Options): string => {
   return pattern
 }
 
+const generatePatternPathAbempty = (options: RegExpUri.Options): string => {
+  let pattern = `(?:/${segment})*`
+  if (options.groups === "all") pattern = `(?<pathAbempty>${pattern})`
+  return pattern
+}
+
+const generatePatternPathNoauthority = (options: RegExpUri.Options): string => {
+  let pattern = `(?:${pathAbsolute}|${pathRootless}|${pathEmpty})`
+  if (options.groups === "all") pattern = `(?<pathNoauthority>${pattern})`
+  return pattern
+}
+
 const generatePatternSchemeHierPart = (options: RegExpUri.Options): string => {
   const scheme = generatePatternScheme(options)
   const authority = generatePatternAuthority(options)
+  const pathAbempty = generatePatternPathAbempty(options)
+  const pathNoauthority = generatePatternPathNoauthority(options)
   const { requireScheme, requireDoubleSlash, requireAuthority } = options
   switch (requireAuthority) {
     case "always": // authority
@@ -276,6 +290,27 @@ class RegExpUri extends RegExp {
     super(generatePattern(optionsDetailed), flags)
     this.options = optionsDetailed
   }
+  exec(string: string): RegExpExecArray | null {
+    const result = RegExp.prototype.exec.call(this, string)
+    if (result?.groups) {
+      if (
+        "pathAbempty" in result.groups &&
+        "pathNoauthority" in result.groups
+      ) {
+        const path = result.groups.pathAbempty ?? result.groups.pathNoauthority
+        const query = result.groups.query
+        const fragment = result.groups.fragment
+        delete result.groups.pathAbempty
+        delete result.groups.pathNoauthority
+        delete result.groups.query
+        delete result.groups.fragment
+        result.groups.path = path
+        result.groups.query = query
+        result.groups.fragment = fragment
+      }
+    }
+    return result
+  }
 }
 
 namespace RegExpUri {
@@ -379,8 +414,8 @@ namespace RegExpUri {
     host: string | undefined
     port: string | undefined
     path: string | undefined
-    fragment: string | undefined
     query: string | undefined
+    fragment: string | undefined
   }
 
   export type Whitelist<T> = { allow: T[]; disallow?: never }
