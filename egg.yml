@@ -3,7 +3,7 @@ name: uriware
 entry: ./src/index.ts
 description: Yet another RFC3986-aware URI utilities.
 homepage: https://github.com/yuhr/uriware
-version: 0.0.3
+version: 0.0.4
 unstable: true
 unlisted: false
 files:
