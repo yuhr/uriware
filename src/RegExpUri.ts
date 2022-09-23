@@ -292,7 +292,7 @@ class RegExpUri extends RegExp {
 		const result = RegExp.prototype.exec.call(this, string)
 		if (result?.groups) {
 			if (
-				"pathAbempty" in result.groups &&
+				"pathAbempty" in result.groups ||
 				"pathNoauthority" in result.groups
 			) {
 				const path = result.groups.pathAbempty ?? result.groups.pathNoauthority
