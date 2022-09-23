@@ -291,6 +291,7 @@ class RegExpUri extends RegExp {
 	exec(string: string): RegExpExecArray | null {
 		const result = RegExp.prototype.exec.call(this, string)
 		if (result?.groups) {
+			if (!this.options.allowEmpty && result[0] === "") return null
 			if (
 				"pathAbempty" in result.groups ||
 				"pathNoauthority" in result.groups
@@ -388,6 +389,13 @@ namespace RegExpUri {
 		allowEmptyFragment: boolean
 
 		/**
+		 * Allows matching to empty string.
+		 *
+		 * Default: `false`.
+		 */
+		allowEmpty: boolean
+
+		/**
 		 * Enables exact match pattern. It wraps the `RegExp` pattern with `^` and `$`.
 		 *
 		 * Default: `false`.
@@ -431,6 +439,7 @@ namespace RegExpUri {
 			allowRelative: true,
 			allowEmptyQuery: true,
 			allowEmptyFragment: true,
+			allowEmpty: false,
 		} as Omit<Options, "exact" | "groups">,
 		convenient: {
 			schemes: { allow: ["https", "http"] },
@@ -443,6 +452,7 @@ namespace RegExpUri {
 			allowRelative: false,
 			allowEmptyQuery: false,
 			allowEmptyFragment: false,
+			allowEmpty: false,
 		} as Omit<Options, "exact" | "groups">,
 	} as const
 }
