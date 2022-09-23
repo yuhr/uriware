@@ -238,9 +238,9 @@ const generatePatternSchemeHierPart = (options: RegExpUri.Options): string => {
 						case "always": // double slash
 							return `(?:${scheme}:)?(?://${authority}${pathAbempty}|${pathNoauthority})`
 						case "never": // double slash
-							return `(?:${scheme}:(?://${authority}${pathAbempty}|${pathNoauthority})|(?:${authority}${pathAbempty}|${pathNoauthority}))`
+							return `(?:${scheme}://)?(?:${authority}${pathAbempty}|${pathNoauthority})`
 						default: // double slash
-							return `(?:${scheme}:(?://${authority}${pathAbempty}|${pathNoauthority})|(?:(?://)?${authority}${pathAbempty}|${pathNoauthority}))`
+							return `(?:${scheme}://|//)?(?:${authority}${pathAbempty}|${pathNoauthority})`
 					}
 			}
 	}
