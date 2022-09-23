@@ -63,7 +63,7 @@ const normalizeOptions = (
 	const preset = options?.preset ?? "canonical"
 	const exact = options?.exact ?? false
 	const groups = options?.groups ?? (exact ? "all" : "outmost")
-	return { ...RegExpUri.presets[preset], exact, groups }
+	return { ...RegExpUri.presets[preset], ...options, exact, groups }
 }
 
 const generatePatternScheme = (options: RegExpUri.Options): string => {
